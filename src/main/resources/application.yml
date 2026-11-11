@@ -1,0 +1,21 @@
+server:
+  port: 4110
+
+spring:
+  application:
+    name: split-bill-api
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    default-property-inclusion: non_null
+    generator:
+      write-bigdecimal-as-plain: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+
+splitbill:
+  # Used to derive service_charge_pct = (sum of unicode values of lowercase username) % 10
+  github-username: ${SPLITBILL_GITHUB_USERNAME:rezihandianto}
